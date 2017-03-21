@@ -176,3 +176,76 @@ print.bintree <- function(btree) {
     print(btree$tree)
   }
 }
+  
+  stack = function() {
+e = new.env()
+s = list(
+e = e,
+push = function(v) {
+s = c(get("s", e), v)
+l = length(s)
+print(l)
+assign("s", s, e)
+},
+
+pop = function() {
+  s = get("s", e)
+  l = length(s)
+  print(l)
+  r = s[l];
+  print(r)
+  if (l == 1) {
+    assign("s", list(), e)
+  } else{
+    assign("s", s[1:(l - 1)], e)
+  }
+  print(l)
+  return(r)
+},
+
+print.queue = function() {
+  print(get("s", e))
+}
+
+)
+assign("this", s, envir = e)
+class(s) = append(class(s), "queue")
+return(s)
+}
+
+queue = function() {
+e = new.env()
+q = list(
+e = e,
+push = function(v) {
+q = c(v, get("q", e))
+l = length(q)
+print(l)
+assign("q", q, e)
+v
+},
+
+pop = function() {
+  q = get("q", e)
+  l = length(q)
+  print(l)
+  r = q[l];
+  print(r)
+  if (l == 1) {
+    assign("q", list(), e)
+  } else{
+    assign("q", q[1:(l - 1)], e)
+  }
+  print(l)
+  return(r)
+},
+
+print.queue = function() {
+  print(get("q", e))
+}
+
+)
+assign("this", q, envir = e)
+class(q) = append(class(q), "queue")
+return(q)
+}
